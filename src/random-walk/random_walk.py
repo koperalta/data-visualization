@@ -19,25 +19,8 @@ class RandomWalk:
         # Keep taking steps until the walk reaches the desired number of points.
         while len(self.x_values) < self.num_points:
             # Decide which direction to go, and how far to go.
-            
-            # choice(1, -1) returns either 1 or -1
-            x_direction = choice([1, -1]) # 1 for right, -1 for left
-            y_direction = choice([1, -1]) # 1 for up, -1 for down
-            
-            # choice([0, 1, 2, 3, 4]) returns either 0, 1, 2, 3, or 4 which
-            # represents the distance to move in the x direction.
-            x_distance = choice([0, 1, 2, 3, 4, 5, 6, 7, 8])
-            y_distance = choice([0, 1, 2, 3, 4, 5, 6, 7, 8])
-            
-            # Calculate the x step based on the direction and distance.
-            x_step = x_direction * x_distance
-            y_step = y_direction * y_distance
-            
-            # Reject moves that go nowhere.
-            # If both x_step and y_step are 0, we skip this iteration.
-            # This allows cases where only one axis is moved.
-            if x_step == 0 and y_step == 0:
-                continue
+            x_step = self._get_xstep() # Get the x step
+            y_step = self._get_ystep() # Get the y step
             
             # Calculate the new position
             x = self.x_values[-1] + x_step # Last x value + step
@@ -46,3 +29,29 @@ class RandomWalk:
             # Append the new position to the lists.
             self.x_values.append(x)
             self.y_values.append(y)
+    
+    def _get_xstep(self) :
+        # choice(1, -1) returns either 1 or -1
+        x_direction = choice([1, -1]) # 1 for right, -1 for left
+        
+        # choice([0, 1, 2, 3, 4, 5, 6, 7, 8]) returns either 0, 1, 2, 3, or 4 which
+        # represents the distance to move in the x direction.
+        x_distance = choice([0, 1, 2, 3, 4, 5, 6, 7, 8])
+        
+        # Calculate the x step based on the direction and distance.
+        x_step = x_direction * x_distance
+        
+        return x_step
+
+    def _get_ystep(self) :
+        # choice(1, -1) returns either 1 or -1
+        y_direction = choice([1, -1])
+        
+        # choice([0, 1, 2, 3, 4, 5, 6, 7, 8]) returns either 0, 1, 2, 3, or 4 which
+        # represents the distance to move in the y direction.
+        y_distance = choice([0, 1, 2, 3, 4, 5, 6, 7, 8])
+        
+        # Calculate the y step based on the direction and distance.
+        y_step = y_direction * y_distance
+        
+        return y_step
