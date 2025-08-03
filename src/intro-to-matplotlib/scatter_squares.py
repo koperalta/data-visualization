@@ -34,4 +34,4 @@ ax.ticklabel_format(style='plain', useOffset=False) # Set the tick label format 
 # Saves the plot to a file named 'scatter_squares.png' in ../assets directory.
 # ../assets/scatter_squares.png tells matplotlib to save the file in the assets directory one level up from src.
 # bbox_inches='tight' ensures that the saved figure does not have extra whitespace around it.
-plt.savefig('../assets/scatter_squares.png', bbox_inches='tight')
+plt.savefig('assets/scatter_squares.png', bbox_inches='tight')
